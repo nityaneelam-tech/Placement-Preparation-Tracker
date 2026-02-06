@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subjects Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/">Dashboard</a>
+    <a href="/dsa">DSA</a>
+    <a href="/subjects">Subjects</a>
+    <a href="/mocktests">Mock Tests</a>
+</div>
+
+<div class="container">
+    <h2>Subjects Tracker</h2>
+
+    <form method="post">
+        <input name="subject" placeholder="Subject (OS, DBMS)" required>
+        <input name="topic" placeholder="Topic Name" required>
+        <select name="status">
+            <option>Completed</option>
+            <option>Pending</option>
+        </select>
+        <button>Add Topic</button>
+    </form>
+
+    {% for s in data %}
+    <div class="card">
+        <b>{{ s[1] }}</b> - {{ s[2] }} ({{ s[3] }})
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

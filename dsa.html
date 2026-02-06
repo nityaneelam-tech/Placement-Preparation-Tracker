@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DSA Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="nav-title">Placement Tracker</div>
+    <div class="nav-links">
+        <a href="/">Dashboard</a>
+        <a href="/dsa">DSA</a>
+        <a href="/subjects">Subjects</a>
+        <a href="/mocktests">Mock Tests</a>
+    </div>
+</div>
+
+<div class="container">
+    <h1>DSA Tracker</h1>
+    <p class="subtitle">Track and manage your DSA practice</p>
+
+    <!-- ADD DSA FORM -->
+    <div class="card">
+        <h3>Add New Problem</h3>
+        <form method="post">
+            <input name="problem" placeholder="Problem Name" required>
+            <input name="platform" placeholder="Platform (LeetCode / GFG)" required>
+
+            <select name="difficulty">
+                <option>Easy</option>
+                <option>Medium</option>
+                <option>Hard</option>
+            </select>
+
+            <select name="status">
+                <option>Solved</option>
+                <option>Pending</option>
+            </select>
+
+            <button type="submit">Add Problem</button>
+        </form>
+    </div>
+
+    <!-- FILTER SECTION -->
+    <div class="card">
+        <h3>Filter Problems</h3>
+        <form method="get" class="filter-form">
+            <select name="difficulty">
+                <option value="">All Difficulties</option>
+                <option>Easy</option>
+                <option>Medium</option>
+                <option>Hard</option>
+            </select>
+
+            <select name="status">
+                <option value="">All Status</option>
+                <option>Solved</option>
+                <option>Pending</option>
+            </select>
+
+            <button type="submit">Apply Filter</button>
+        </form>
+    </div>
+
+    <!-- PROBLEM LIST -->
+    {% for d in data %}
+    <div class="card status-{{ d[4] }}">
+        <div class="dsa-row">
+            <div>
+                <h3>{{ d[1] }}</h3>
+                <p>{{ d[2] }} | {{ d[3] }} | {{ d[4] }}</p>
+            </div>
+            <div>
+                <a href="/delete/dsa/{{ d[0] }}" class="delete-btn">❌</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p>No problems found.</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>

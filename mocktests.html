@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mock Tests | Placement Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="nav-title">Placement Tracker</div>
+    <div class="nav-links">
+        <a href="/">Dashboard</a>
+        <a href="/dsa">DSA</a>
+        <a href="/subjects">Subjects</a>
+        <a href="/mocktests">Mock Tests</a>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Mock Tests</h1>
+    <p class="subtitle">Track your mock test performance</p>
+
+    <!-- ADD MOCK TEST -->
+    <div class="card">
+        <h3>Add Mock Test</h3>
+        <form method="post">
+            <input name="test_name" placeholder="Test Name" required>
+            <input type="number" name="score" placeholder="Score" required>
+            <input type="date" name="date" required>
+            <button type="submit">Add Test</button>
+        </form>
+    </div>
+
+    <!-- AVERAGE SCORE -->
+    {% if avg_score %}
+    <div class="card">
+        <h3>📊 Performance Summary</h3>
+        <p><b>Average Score:</b> {{ avg_score }}</p>
+    </div>
+    {% endif %}
+
+    <!-- MOCK TEST LIST -->
+    {% for m in data %}
+    <div class="card">
+        <h3>{{ m[1] }}</h3>
+        <p>Score: <b>{{ m[2] }}</b></p>
+        <p>Date: {{ m[3] }}</p>
+    </div>
+    {% else %}
+    <p>No mock tests added yet.</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard | Placement Preparation Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="nav-title">Placement Tracker</div>
+    <div class="nav-links">
+        <a href="/">Dashboard</a>
+        <a href="/dsa">DSA</a>
+        <a href="/subjects">Subjects</a>
+        <a href="/mocktests">Mock Tests</a>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+    <h1>Dashboard</h1>
+    <p class="subtitle">Track your placement preparation progress</p>
+
+    <!-- STAT CARDS -->
+    <div class="grid">
+        <div class="card">
+            <h3>📘 DSA Problems</h3>
+            <p class="count">{{ dsa }}</p>
+        </div>
+
+        <div class="card">
+            <h3>📚 Subjects Covered</h3>
+            <p class="count">{{ subjects }}</p>
+        </div>
+
+        <div class="card">
+            <h3>📝 Mock Tests</h3>
+            <p class="count">{{ mocks }}</p>
+        </div>
+    </div>
+
+    <!-- PROGRESS SECTION -->
+    <div class="card">
+        <h3>📈 Preparation Progress</h3>
+
+        <p>DSA Progress</p>
+        <div class="progress">
+            <div class="progress-fill" style="width: {{ dsa_progress }}%">
+                {{ dsa_progress }}%
+            </div>
+        </div>
+
+        <p>Subject Progress</p>
+        <div class="progress">
+            <div class="progress-fill blue" style="width: {{ subject_progress }}%">
+                {{ subject_progress }}%
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
